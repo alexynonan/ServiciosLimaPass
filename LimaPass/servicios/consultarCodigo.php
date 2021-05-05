@@ -1,6 +1,6 @@
 <?php
 
-include_once('cnx.php');
+include("cn/conexion.php");
 
 function validaRequerido($valor){
     if (trim($valor) == '' || strlen($valor) > 13 || strlen($valor) < 8) {
@@ -17,7 +17,7 @@ if ($body){
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
         $usuario = $body["usuario"];
-        
+
         if (!validaRequerido($usuario)) {
     
             $json = array("status" => 100, "mensaje" => "Ingrese correcto el parametro del usuario");
@@ -45,7 +45,7 @@ if ($body){
 
                 $objCodigo = array("codigo" => $codigo);
 
-                $json = array("status" => 200, "message" => "Correcto", "data" => $objCodigo );
+                $json = array("status" => 200, "mensaje" => "Correcto", "data" => $objCodigo );
     
             }else{
 
@@ -61,7 +61,7 @@ if ($body){
     } 
       
 } else {
-   $json = array("status" => 400, "message" => "Error de Parametros");
+   $json = array("status" => 400, "mensaje" => "Error de Parametros");
 }
 
 mysqli_close($conexion);

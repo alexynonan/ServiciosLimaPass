@@ -1,6 +1,6 @@
 <?php
 
-include_once('cnx.php');
+include("cn/conexion.php");
 
 $body = json_decode(file_get_contents('php://input'),true);
 
@@ -155,13 +155,13 @@ if ($body){
                            $resultTarjeta = $conexion->query($sqlTarjeta);
 
                            if($resultTarjeta){
-                              $json = array("status" => 200, "message" => "Registro con Exito");
+                              $json = array("status" => 200, "mensaje" => "Registro con Exito");
                            }else{
-                              $json = array("status" => 100, "message" => "Problemas con el servicio");
+                              $json = array("status" => 100, "mensaje" => "Problemas con el servicio");
                            }
                            
                         }else{
-                           $json = array("status" => 100, "message" => "Problemas con el servicio");
+                           $json = array("status" => 100, "mensaje" => "Problemas con el servicio");
                         }
 
                      }else{
@@ -178,15 +178,15 @@ if ($body){
 
                            if ($resultDeleteCorreo){
 
-                              $json = array("status" => 100, "message" => "Intenta registrarte dentro de unos minutos");
+                              $json = array("status" => 100, "mensaje" => "Intenta registrarte dentro de unos minutos");
                         
                            }else{
-                              $json = array("status" => 100, "message" => "Problemas con el Servicio");
+                              $json = array("status" => 100, "mensaje" => "Problemas con el Servicio");
                            }
 
                         }else{
 
-                           $json = array("status" => 100, "message" => "Problemas con el Servicio");
+                           $json = array("status" => 100, "mensaje" => "Problemas con el Servicio");
                         }
                      }
 
@@ -198,37 +198,37 @@ if ($body){
 
                      if ($resultDelete){
                         
-                        $json = array("status" => 100, "message" => "Intenta registrarte dentro de unos minutos");
+                        $json = array("status" => 100, "mensaje" => "Intenta registrarte dentro de unos minutos");
                      }else{
 
-                        $json = array("status" => 100, "message" => "Problemas con el Servicio");
+                        $json = array("status" => 100, "mensaje" => "Problemas con el Servicio");
                      }
                   }
                   
                    // *******************************************************************
                   
                }else{
-                  $json = array("status" => 100, "message" => "Problemas con el Servicio");
+                  $json = array("status" => 100, "mensaje" => "Problemas con el Servicio");
                }
 
             }else{
-               $json = array("status" => 100, "message" => "Ya se registro este numero");
+               $json = array("status" => 100, "mensaje" => "Ya se registro este numero");
             }   
    
          }else{
    
-            $json = array("status" => 100, "message" => "Ya se registro este correo");
+            $json = array("status" => 100, "mensaje" => "Ya se registro este correo");
          }
 
       }else{
-         $json = array("status" => 100, "message" => "Ya estas registrado");
+         $json = array("status" => 100, "mensaje" => "Ya estas registrado");
          
       }
 
    }
 
 }else{
-	$json = array("status" => 400, "message" => "Error de Parametros");
+	$json = array("status" => 400, "mensaje" => "Error de Parametros");
 }
 
 mysqli_close($conexion);

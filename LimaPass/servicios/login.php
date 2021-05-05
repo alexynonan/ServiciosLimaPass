@@ -1,6 +1,6 @@
 <?php
 
-include_once('cnx.php');
+include("cn/conexion.php");
 
 function validaRequerido($valor){
     if(trim($valor) == '' || strlen($valor) > 13 || strlen($valor) < 8){
@@ -58,7 +58,7 @@ if ($body){
 
                 $resultSelect['codigo'] = $codigo;
 
-                $json = array("status" => 200, "message" => "Correcto", "data" => $resultSelect );
+                $json = array("status" => 200, "mensaje" => "Correcto", "data" => $resultSelect );
 
             }else{
 
@@ -71,16 +71,20 @@ if ($body){
         }
         
     }else{
-        $json = array("status" => 100, "message" => "Proeblmas con el Servicio ");  
+        $json = array("status" => 100, "mensaje" => "Proeblmas con el Servicio ");  
     } 
    
 }else{
-	$json = array("status" => 400, "message" => "Error de Parametros");
+	$json = array("status" => 400, "mensaje" => "Error de Parametros");
 }
 
 mysqli_close($conexion);
 
 header('Content-type: application/json');
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Headers: X-API-KEY, Origin, X-Requested-With, Content-Type, Accept, Access-Control-Request-Method");
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Allow: GET, POST, OPTIONS, PUT, DELETE");
 echo json_encode($json);
 return;
 ?>

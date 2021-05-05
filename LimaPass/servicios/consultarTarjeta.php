@@ -1,6 +1,6 @@
 <?php
 
-include_once('cnx.php');
+include("cn/conexion.php");
 
 function validaRequerido($valor){
     if(trim($valor) == '' || strlen($valor) > 12 || strlen($valor) < 8){
@@ -58,7 +58,7 @@ if ($body){
                     $i++;
                 }
 
-                $json = array("status" => 200, "message" => "Correcto", "data" => $result);
+                $json = array("status" => 200, "mensaje" => "Correcto", "data" => $result);
 
             }else{
                 $json = array("status" => 100, "mensaje" => "Parece que no esta registrado");
@@ -70,11 +70,11 @@ if ($body){
         }
         
     }else{
-        $json = array("status" => 100, "message" => "Proeblmas con el Servicio ");  
+        $json = array("status" => 100, "mensaje" => "Proeblmas con el Servicio ");  
     } 
    
 }else{
-	$json = array("status" => 400, "message" => "Error de Parametros");
+	$json = array("status" => 400, "mensaje" => "Error de Parametros");
 }
 
 mysqli_close($conexion);
